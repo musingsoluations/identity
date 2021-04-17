@@ -20,14 +20,17 @@ namespace Musing.Identity.Api.Controllers
     {
         private readonly IMapper _mapper;
         private readonly UserManager<UserModel> _userManager;
-        private readonly SignInManager<UserModel> _signInManager;
         public UserController(IMapper mapper, UserManager<UserModel> userManager, SignInManager<UserModel> signInManager)
         {
                 _mapper = mapper;
                 _userManager = userManager;
-                _signInManager = signInManager;
         }
 
+        /// <summary>
+        /// Registers new user.
+        /// </summary>
+        /// <param name="userModelDto"></param>
+        /// <returns></returns>
         [HttpPost("registerUser")]
         public async Task<IActionResult> RegisterUser([FromBody] RegisterUserModelDto userModelDto)
         {
@@ -35,17 +38,19 @@ namespace Musing.Identity.Api.Controllers
             var result = await _userManager.CreateAsync(user, userModelDto.Password);
             if (result.Succeeded)
             {
-                return CreatedAtAction(nameof(GetUserByEmail),new {email =user.Email},new {});
+                return CreatedAtAction(nameof(RetrieveUserByEmail),new {email =user.Email},new {});
             }
-            else
-            {
-                return BadRequest(result.Errors);
-            }
+            return BadRequest(result.Errors);
         }
 
-        [ActionName("GetUserByEmail")]
-        [HttpGet("GetUserByEmail/{email}")]
-        public async Task<IActionResult> GetUserByEmail(string email)
+        /// <summary>
+        /// Retrieves user by registered email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        [ActionName("RetrieveUserByEmail")]
+        [HttpGet("RetrieveUserByEmail/{email}")]
+        public async Task<IActionResult> RetrieveUserByEmail(string email)
         {
             await Task.Delay(1000);
             return Ok();

@@ -13,7 +13,8 @@ namespace Musing.Identity.Api.Profiles
         public UserDtoProfile()
         {
             CreateMap<RegisterUserModelDto, UserModel>()
-                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Email))
+                .ForMember(useDestination => useDestination.UserName, 
+                    userOptions => userOptions.MapFrom(userSource => userSource.Email))
                 .ReverseMap();
         }
     }

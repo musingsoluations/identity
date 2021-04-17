@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 97%;
+  width: 99%;
+  margin: 0px;
+  box-sizing: border-box;
+  display: flex;
+  justify-items: center;
+  align-content: center;
+  align-items: center;
+}
+.container {
+  background: #b3b3af;
+  box-sizing: border-box;
+  justify-items: center;
+  align-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}

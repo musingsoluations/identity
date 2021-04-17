@@ -9,7 +9,6 @@ namespace Musing.Identity.Api.validators
         {
             // Stops the validation on first error
             CascadeMode = CascadeMode.Stop;
-            
             RuleFor(registerUserModelDto => registerUserModelDto.UserName)
                 .NotNull().WithMessage("Please provide a user name.")
                 .Length(5, 50).WithMessage("User name must be between 5 and 50 characters");

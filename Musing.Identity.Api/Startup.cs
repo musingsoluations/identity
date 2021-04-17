@@ -1,16 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Musing.Identity.Api.Context;
@@ -19,6 +13,7 @@ using FluentValidation.AspNetCore;
 
 namespace Musing.Identity.Api
 {
+    // ReSharper disable once ClassCanBeSealed.Global
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -30,16 +25,16 @@ namespace Musing.Identity.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-        
             //Register fluent validation
             services.AddControllers().AddFluentValidation(fv =>
                 fv.RegisterValidatorsFromAssemblyContaining<Startup>());
-            
             //Register automapper
             services.AddAutoMapper(typeof(Startup));
             services.AddDbContext<MipDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentityCore<UserModel>(options =>
+            services.AddAuthentication();
+            services.AddAuthentication();
+            services.AddIdentity<UserModel,RoleModel>(options =>
             {
                 options.Password.RequiredLength = 8;
                 options.Password.RequireNonAlphanumeric = true;
@@ -68,10 +63,7 @@ namespace Musing.Identity.Api
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => endpoints.MapControllers());
         }
     }
 }

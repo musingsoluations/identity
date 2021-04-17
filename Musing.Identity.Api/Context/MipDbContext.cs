@@ -12,7 +12,7 @@ using System;
 
 namespace Musing.Identity.Api.Context
 {
-    public class MipDbContext : IdentityDbContext<UserModel, RoleModel,Guid>
+    internal class MipDbContext : IdentityDbContext<UserModel, RoleModel,Guid>
     {
         public MipDbContext(DbContextOptions<MipDbContext> dbContextOptions) : base(dbContextOptions)
         {

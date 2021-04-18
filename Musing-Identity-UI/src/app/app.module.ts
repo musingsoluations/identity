@@ -7,18 +7,28 @@ import { UserRegistrationComponent } from './Users/user-registration/user-regist
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { UserLoginComponent } from './Users/user-login/user-login.component';
+import { MatInputModule } from "@angular/material/input";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card'
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserRegistrationComponent
+    UserRegistrationComponent,
+    UserLoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatInputModule,
+    MatCardModule,
+    MatButtonModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
-    StoreRouterConnectingModule.forRoot()
+    StoreRouterConnectingModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

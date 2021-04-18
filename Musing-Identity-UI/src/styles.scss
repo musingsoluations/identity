@@ -1,19 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
-
 html, body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   height: 100%;
   width: 100%;
+  background: #bcbab7;
   box-sizing: border-box;
 }
 
 .container {
   height: 100%;
   width: 100%;
-  display: flex;
   text-align: center;
   justify-content: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .container-main-area {
@@ -26,3 +28,4 @@ html, body {
   justify-content: center;
   box-sizing: border-box;
 }
+

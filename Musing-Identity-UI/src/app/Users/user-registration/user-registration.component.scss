@@ -1,0 +1,43 @@
+.mat-card-header{
+  background-color: rgb(5, 193, 156) !important;
+  padding:.5rem !important;
+  margin: .1rem !important;
+}
+
+.mat-card-title{
+  color: #eaeaf1;
+}
+
+.mat-card{
+  padding:0 !important;
+  width: 50%;
+  align-self: center;
+  box-sizing: border-box;
+}
+
+.mat-card-content{
+  padding:5px !important;
+}
+
+.form-display{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.mat-form-field{
+  width: 70%;
+}
+
+.mat-card-setting{
+  text-align: center;
+}
+
+.mat-button-base{
+  margin: .5rem;
+}

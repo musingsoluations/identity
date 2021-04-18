@@ -1,43 +1,20 @@
-.mat-card-header{
-  background-color:rgb(120, 218, 248) !important;
-  padding:.5rem !important;
-  margin: .1rem !important;
-}
-
-.mat-card-title{
-  color: blue;
-}
-
- .mat-card{
-   padding:0 !important;
-   width: 70%;
-   align-self: center;
-   box-sizing: border-box;
-}
-
-.mat-card-content{
-  padding:5px !important;
-}
-
-.form-display{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+.router-outlet{
+  box-sizing: border-box;
+  justify-self: center;
   justify-content: center;
-  align-content: center;
-  align-items: center;
+  flex-grow: 1;
+}
+.head-div{
+  padding: .5rem;
+  box-sizing: border-box;
+  background: #00a787;
+  color: white;
+  font-size: 1.7rem;
+  font-weight: bold;
+  height: 2.5rem;
   text-align: center;
 }
 
-.mat-form-field{
-  width: 70%;
-}
-
-.mat-card-setting{
-  text-align: center;
-}
-
-.action-buttons-div{
-  margin: .2rem;
-  padding: .2rem;
+.foot-div{
+  background: darkcyan;
 }

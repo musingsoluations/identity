@@ -13,9 +13,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoaderComponent } from './Common/Loader/loader/loader.component';
 
 @NgModule({
-  declarations: [AppComponent, UserRegistrationComponent, UserLoginComponent],
+  declarations: [AppComponent, UserRegistrationComponent, UserLoginComponent, LoaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

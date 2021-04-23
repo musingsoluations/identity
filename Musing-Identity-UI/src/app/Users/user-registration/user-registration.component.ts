@@ -21,8 +21,8 @@ export class UserRegistrationComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit() {
-    let userInput: UserRegistrationModel = this.userInputForm.value;
+  onSubmit(): void {
+    const userInput: UserRegistrationModel = this.userInputForm.value;
     userInput.UserName = this.userInputForm.value.Email;
     console.warn(userInput);
   }

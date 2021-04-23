@@ -1,5 +1,5 @@
-<div class="container-main-area">
-  <mat-card class="mat-card-setting">
+<div class="w-full h-full content-center align-middle flex flex-row flex-wrap p-3 box-border">
+  <mat-card class="mx-auto w-2/3 box-border">
     <mat-card-header>
       <mat-card-title> Register User</mat-card-title>
     </mat-card-header>
@@ -23,11 +23,11 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>Password</mat-label>
-          <input formControlName="Password" matInput type="password" placeholder="Enter a strong password.">
+          <input class="rest" formControlName="Password" type="password" matInput placeholder="Enter a strong password.">
         </mat-form-field>
         <mat-form-field>
           <mat-label>Re-enter Password</mat-label>
-          <input formControlName="RenterPassword" matInput type="password" placeholder="Re-enter the password.">
+          <input class="rest" formControlName="RenterPassword" matInput type="password" placeholder="Re-enter the password.">
         </mat-form-field>
         <div class="button-spacing">
           <button type="submit" [disabled]="!userInputForm.valid"  mat-raised-button color="primary">Register</button>

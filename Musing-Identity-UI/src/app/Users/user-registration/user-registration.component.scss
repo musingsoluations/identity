@@ -1,18 +1,22 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 .mat-card-header{
-  background-color: rgb(5, 193, 156) !important;
-  padding:.5rem !important;
-  margin: .1rem !important;
+  @apply bg-blue-300;
+  @apply p-2;
+  @apply m-4;
 }
 
 .mat-card-title{
-  color: #eaeaf1;
+  @apply from-gray-200
 }
 
 .mat-card{
-  padding:0 !important;
-  width: 50%;
-  align-self: center;
-  box-sizing: border-box;
+  @apply p-2;
+  @apply w-1/2;
+  @apply self-center;
+  @apply box-border;
 }
 
 .mat-card-content{
@@ -20,24 +24,31 @@
 }
 
 .form-display{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  text-align: center;
-  box-sizing: border-box;
+  @apply flex;
+  @apply flex-col;
+  @apply w-full;
+  @apply box-border;
+  @apply justify-center;
+  @apply items-center;
+  @apply content-center;
+  @apply text-center
 }
 
 .mat-form-field{
-  width: 70%;
+  @apply w-3/4;
 }
 
 .mat-card-setting{
-  text-align: center;
+  @apply text-center;
 }
 
 .mat-button-base{
-  margin: .5rem;
+  @apply m-2;
+  @apply p-2;
+}
+
+.rest{
+  padding: unset;
+  margin: unset;
+  line-height: unset;
 }

@@ -1,31 +1,10 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 /* You can add global styles to this file, and also import other style files */
 html, body {
-  margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   height: 100%;
   width: 100%;
-  background: #bcbab7;
-  box-sizing: border-box;
-}
-
-.container {
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  justify-content: center;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-}
-
-.container-main-area {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  padding: 2rem;
-  text-align: center;
-  justify-content: center;
-  box-sizing: border-box;
 }
 

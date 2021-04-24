@@ -28,6 +28,7 @@ namespace Musing.Identity.Api
             //Register fluent validation
             services.AddControllers().AddFluentValidation(fv =>
                 fv.RegisterValidatorsFromAssemblyContaining<Startup>());
+            services.AddCors();
             //Register automapper
             services.AddAutoMapper(typeof(Startup));
             services.AddDbContext<MipDbContext>(options =>
@@ -60,6 +61,10 @@ namespace Musing.Identity.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Musing.Identity.Api v1"));
             }
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();

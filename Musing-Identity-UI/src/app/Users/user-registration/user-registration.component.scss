@@ -1,29 +1,25 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
-.mat-card-header{
+.mat-card-header {
   @apply bg-blue-300;
   @apply p-2;
   @apply m-4;
 }
 
-.mat-card-title{
-  @apply from-gray-200
+.mat-card-title {
+  @apply from-gray-200;
 }
 
-.mat-card{
+.mat-card {
   @apply p-2;
   @apply w-1/2;
   @apply self-center;
   @apply box-border;
 }
 
-.mat-card-content{
-  padding:5px !important;
+.mat-card-content {
+  padding: 5px !important;
 }
 
-.form-display{
+.form-display {
   @apply flex;
   @apply flex-col;
   @apply w-full;
@@ -31,23 +27,23 @@
   @apply justify-center;
   @apply items-center;
   @apply content-center;
-  @apply text-center
-}
-
-.mat-form-field{
-  @apply w-3/4;
-}
-
-.mat-card-setting{
   @apply text-center;
 }
 
-.mat-button-base{
+.mat-form-field {
+  @apply w-3/4;
+}
+
+.mat-card-setting {
+  @apply text-center;
+}
+
+.mat-button-base {
   @apply m-2;
   @apply p-2;
 }
 
-.rest{
+.rest {
   padding: unset;
   margin: unset;
   line-height: unset;

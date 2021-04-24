@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Form, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { UserRegistrationModel } from '../Models/UserRegistrationModel';
+import * as FromHttpState from '../../Common/store/httpRequestStore/state';
+import { Store } from '@ngrx/store';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-registration',
@@ -8,6 +11,12 @@ import { UserRegistrationModel } from '../Models/UserRegistrationModel';
   styleUrls: ['./user-registration.component.scss'],
 })
 export class UserRegistrationComponent implements OnInit {
+  constructor(
+    public fb: FormBuilder,
+    private httpStore: Store<FromHttpState.HttpRequestState>,
+    private httpClient: HttpClient
+  ) {}
+
   userInputForm = this.fb.group({
     FirstName: ['', Validators.required],
     LastName: ['', Validators.required],
@@ -17,15 +26,32 @@ export class UserRegistrationComponent implements OnInit {
     PhoneNumber: ['', Validators.required],
   });
 
-  constructor(public fb: FormBuilder) {}
+  // load(): void {
+  //   this.httpStore.dispatch(FromHttpAction.httpRequestStart({ status: true }));
+  //   setTimeout(() => {
+  //     this.httpStore.dispatch(
+  //       FromHttpAction.httpRequestSuccess({ status: false })
+  //     );
+  //   }, 2000);
+  // }
+
+  // load2(): void {
+  //   this.httpStore.dispatch(
+  //     FromHttpAction.httpRequestSuccess({ status: false })
+  //   );
+  // }
 
   ngOnInit(): void {}
 
   onSubmit(): void {
     const userInput: UserRegistrationModel = this.userInputForm.value;
     userInput.UserName = this.userInputForm.value.Email;
+    this.httpClient.post('https://localhost:44371/api/User/registerUser', userInput).subscribe(data=>{
+      console.log(data);
+    })
     console.warn(userInput);
   }
+
   clearForm(): void {
     this.userInputForm.reset();
   }

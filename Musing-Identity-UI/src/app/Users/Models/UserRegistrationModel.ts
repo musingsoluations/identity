@@ -5,8 +5,8 @@
  *  Use: DTO interface to send/retrieve data fromc api for user registration
  */
 
-export interface UserRegistrationModel{
-  FirstName: string
+export interface UserRegistrationModel {
+  FirstName: string;
   LastName: string;
   UserName: string;
   Password: string;

@@ -58,13 +58,14 @@ namespace Musing.Identity.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseCors(builder => builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Musing.Identity.Api v1"));
             }
-            app.UseCors(builder => builder
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
+            //TODO: add proper cors setting for prod builds
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();

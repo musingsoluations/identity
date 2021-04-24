@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
+  HttpErrorResponse,
   HttpEvent,
   HttpHandler,
   HttpInterceptor,
@@ -32,8 +33,29 @@ export class LoaderInterceptorService implements HttpInterceptor {
             observer.next(event);
           }
         },
-        (err) => {
-          alert('error:-' + ' error message');
+        (err: HttpErrorResponse) => {
+          if (err.status === 400) {
+            let validationError: any;
+            let validationErrors: any;
+            if(!err.error.errors){
+              validationError= err.error;
+            }
+            else {
+              validationErrors = err.error.errors;
+            }
+            if(validationError) {
+              Object.values(validationError).forEach((prop:any) => {
+                alert(prop.description);
+              })
+            }else if (validationErrors){
+              Object.values(validationErrors).forEach((prop:any) => {
+                alert(prop);
+              })
+            }
+            else {
+              console.warn(err);
+            }
+          }
           this.httpStore.dispatch(
             FromHttpAction.httpRequestFail({ status: false })
           );

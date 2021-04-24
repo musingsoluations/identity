@@ -26,21 +26,6 @@ export class UserRegistrationComponent implements OnInit {
     PhoneNumber: ['', Validators.required],
   });
 
-  // load(): void {
-  //   this.httpStore.dispatch(FromHttpAction.httpRequestStart({ status: true }));
-  //   setTimeout(() => {
-  //     this.httpStore.dispatch(
-  //       FromHttpAction.httpRequestSuccess({ status: false })
-  //     );
-  //   }, 2000);
-  // }
-
-  // load2(): void {
-  //   this.httpStore.dispatch(
-  //     FromHttpAction.httpRequestSuccess({ status: false })
-  //   );
-  // }
-
   ngOnInit(): void {}
 
   onSubmit(): void {

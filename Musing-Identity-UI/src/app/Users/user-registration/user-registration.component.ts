@@ -4,17 +4,22 @@ import { UserRegistrationModel } from '../Models/UserRegistrationModel';
 import * as FromHttpState from '../../Common/store/httpRequestStore/state';
 import { Store } from '@ngrx/store';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import * as FromHttpAction from '../../Common/store/httpRequestStore';
+import { UserStoreService } from './user.store.services.tx';
 
 @Component({
   selector: 'app-user-registration',
   templateUrl: './user-registration.component.html',
   styleUrls: ['./user-registration.component.scss'],
+  providers: [UserStoreService],
 })
 export class UserRegistrationComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     private httpStore: Store<FromHttpState.HttpRequestState>,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private userStore: UserStoreService
   ) {}
 
   userInputForm = this.fb.group({
@@ -26,14 +31,23 @@ export class UserRegistrationComponent implements OnInit {
     PhoneNumber: ['', Validators.required],
   });
 
-  ngOnInit(): void {}
+  isRequestInProgress$ = new Observable<boolean>();
+
+  ngOnInit(): void {
+    this.isRequestInProgress$ = this.httpStore.select(
+      FromHttpAction.getHttpState
+    );
+  }
 
   onSubmit(): void {
     const userInput: UserRegistrationModel = this.userInputForm.value;
     userInput.UserName = this.userInputForm.value.Email;
-    this.httpClient.post('https://localhost:44371/api/User/registerUser', userInput).subscribe(data=>{
-      console.log(data);
-    })
+    // this.httpClient
+    //   .post('https://localhost:44371/api/User/registerUser', userInput)
+    //   .subscribe((data) => {
+    //     console.log(data);
+    //   });
+    this.userStore.addNewUser(userInput);
     console.warn(userInput);
   }
 

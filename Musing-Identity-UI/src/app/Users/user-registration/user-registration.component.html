@@ -1,7 +1,7 @@
 <div
   class="w-full h-full content-center align-middle flex flex-row flex-wrap p-3 box-border"
 >
-  <mat-card class="mx-auto w-2/3 box-border">
+  <mat-card class="mx-auto w-2/3 box-border" [ngClass]="(isRequestInProgress$ | async) ? 'disabled': ''">
     <mat-card-header>
       <mat-card-title> Register User</mat-card-title>
     </mat-card-header>
@@ -10,6 +10,7 @@
         [formGroup]="userInputForm"
         (ngSubmit)="onSubmit()"
         class="form-display"
+        [attr.disabled]="isRequestInProgress$ | async"
       >
         <mat-form-field>
           <mat-label>Email</mat-label>

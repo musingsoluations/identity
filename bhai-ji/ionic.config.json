@@ -1,0 +1,7 @@
+{
+  "name": "bhai-ji",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

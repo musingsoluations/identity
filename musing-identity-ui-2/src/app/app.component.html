@@ -1,0 +1,4 @@
+<ion-app>
+  <ion-router-outlet></ion-router-outlet>
+  <app-loader-ui *ngIf="requestState$ | async"></app-loader-ui>
+</ion-app>

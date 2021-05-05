@@ -9,8 +9,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { RequestInProgressModule } from './common/store/requestInProgress/request-in-progress.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderUIComponent } from './common/component/loader-ui/loader-ui.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LoaderInterceptorService } from './common/service/interceptor/loader-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { LoaderUIComponent } from './common/component/loader-ui/loader-ui.compon
   imports: [
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     RequestInProgressModule,
@@ -31,7 +34,12 @@ import { LoaderUIComponent } from './common/component/loader-ui/loader-ui.compon
   ],
   providers:
     [
-      { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+      { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: LoaderInterceptorService,
+        multi: true
+      }
     ],
   bootstrap: [AppComponent],
 })

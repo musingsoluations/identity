@@ -16,16 +16,16 @@ import * as FromHttpAction from '../store/httpRequestStore/actions';
   providedIn: 'root',
 })
 export class LoaderInterceptorService implements HttpInterceptor {
-  constructor(private httpStore: Store<FromHttpState.HttpRequestState>) {}
+  constructor(private httpStore: Store<FromHttpState.HttpRequestState>) { }
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     this.httpStore.dispatch(FromHttpAction.httpRequestStart({ status: true }));
-    return new Observable((observer) => {
+    return new Observable((observer: any) => {
       const subscription = next.handle(req).subscribe(
-        (event) => {
+        (event: any) => {
           if (event instanceof HttpResponse) {
             this.httpStore.dispatch(
               FromHttpAction.httpRequestSuccess({ status: false })
@@ -37,18 +37,18 @@ export class LoaderInterceptorService implements HttpInterceptor {
           if (err.status === 400) {
             let validationError: any;
             let validationErrors: any;
-            if(!err.error.errors){
-              validationError= err.error;
+            if (!err.error.errors) {
+              validationError = err.error;
             }
             else {
               validationErrors = err.error.errors;
             }
-            if(validationError) {
-              Object.values(validationError).forEach((prop:any) => {
+            if (validationError) {
+              Object.values(validationError).forEach((prop: any) => {
                 alert(prop.description);
               })
-            }else if (validationErrors){
-              Object.values(validationErrors).forEach((prop:any) => {
+            } else if (validationErrors) {
+              Object.values(validationErrors).forEach((prop: any) => {
                 alert(prop);
               })
             }

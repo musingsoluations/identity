@@ -1,7 +1,0 @@
-{
-  "name": "musing-identity-univesal-ui",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}

@@ -1,12 +1,10 @@
 <div id="container" class="h-full flex w-full">
   <div class="w-full flex h-full">
     <ion-grid class="h-full">
-      <ion-row class="h-full text-center">
-        <ion-col size="8" class="ion-hide-md-down">
-          <div class="overlay-image"></div>
-        </ion-col>
-        <ion-col class="bg-green-50 flex">
-          <ion-card class="m-auto w-full">
+      <ion-row class="h-full items-center justify-center">
+        <ion-col size="8" class="overlay-image ion-hide-md-down"> </ion-col>
+        <ion-col class="bg-green-50 h-full items-center justify-center flex">
+          <ion-card class="w-full">
             <ion-card-header class="bg-green-100">
               <ion-card-title>Register User</ion-card-title>
             </ion-card-header>
@@ -33,6 +31,10 @@
                     <ion-label position="floating">Re-enter Password</ion-label>
                     <ion-input type="Password"></ion-input>
                   </ion-item>
+                  <section class="p-2 justify-center flex">
+                    <ion-button>Register</ion-button>
+                    <ion-button color="danger">Reset</ion-button>
+                  </section>
                 </form>
               </div>
             </ion-card-content>

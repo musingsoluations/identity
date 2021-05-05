@@ -1,1 +1,44 @@
-<div>this is a test message</div>
+<div id="container" class="h-full flex w-full">
+  <div class="w-full flex h-full">
+    <ion-grid class="h-full">
+      <ion-row class="h-full text-center">
+        <ion-col size="8" class="ion-hide-md-down">
+          <div class="overlay-image"></div>
+        </ion-col>
+        <ion-col class="bg-green-50 flex">
+          <ion-card class="m-auto w-full">
+            <ion-card-header class="bg-green-100">
+              <ion-card-title>Register User</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <div class="flex-row">
+                <form class="p-3">
+                  <ion-item>
+                    <ion-label position="floating">Name</ion-label>
+                    <ion-input type="text"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="floating">Mobile Number</ion-label>
+                    <ion-input type="text"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="floating">Email</ion-label>
+                    <ion-input type="email"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="floating">Password</ion-label>
+                    <ion-input type="Password"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="floating">Re-enter Password</ion-label>
+                    <ion-input type="Password"></ion-input>
+                  </ion-item>
+                </form>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</div>

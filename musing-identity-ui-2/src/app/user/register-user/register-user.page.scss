@@ -1,0 +1,17 @@
+.ion-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.overlay-image {
+  height: 100%;
+  color: white;
+  font: bold 2em/2em monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background: linear-gradient(to right, #6bf0daba, #1b8585cc),
+    url("../../../assets/back-register.png");
+}

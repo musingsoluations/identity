@@ -9,6 +9,7 @@ namespace Musing.Identity.Api.DTO
 {
     public class RegisterUserModelDto
     {
+        public string Name { get;set;}
         public string UserName { get; set; }
         public string Password { get; set; }
         public string RenterPassword { get; set; }

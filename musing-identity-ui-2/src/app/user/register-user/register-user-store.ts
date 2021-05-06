@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable @typescript-eslint/naming-convention */
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { RegisterUser } from 'src/app/common/model/register-user';
 import { UserService } from 'src/app/common/service/http/user.service';
@@ -44,8 +45,18 @@ export class RegisterUserStore extends ComponentStore<UserState> {
           this.addUser(userData);
           console.log(data);
         },
-          (error => {
-            console.log(error);
+          (err => {
+            console.log(err);
+            if (err instanceof HttpErrorResponse) {
+              if (err.status === 400) {
+                const errorObject = err.error.errors ? err.error.errors : err.error;
+                Object.values(errorObject).forEach((prop: any) => {
+                  const errorToDisplay = prop.description ? prop.description : prop;
+                  alert(errorToDisplay);
+                });
+              }
+              console.warn(err.error);
+            }
           })
         )
       ))

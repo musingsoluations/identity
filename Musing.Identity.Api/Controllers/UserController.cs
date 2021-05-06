@@ -11,6 +11,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Musing.Identity.Api.DTO;
 using Musing.Identity.Api.Models;
+using Musing.Identity.Api.Context;
 
 namespace Musing.Identity.Api.Controllers
 {
@@ -34,8 +35,16 @@ namespace Musing.Identity.Api.Controllers
         [HttpPost("registerUser")]
         public async Task<IActionResult> RegisterUser([FromBody] RegisterUserModelDto userModelDto)
         {
+            
             var user = _mapper.Map<UserModel>(userModelDto);
+            var foundUser = await _userManager.FindByPhoneNumber(user.PhoneNumber);
+            if (foundUser != null)
+            {
+                var ir = IdentityResult.Failed(new IdentityError() { Code="invalidPhone", Description = "Phone number is already registered" });
+                return BadRequest(ir);
+            }
             var result = await _userManager.CreateAsync(user, userModelDto.Password);
+
             if (result.Succeeded)
             {
                 return CreatedAtAction(nameof(RetrieveUserByEmail),new {email =user.Email},new {});

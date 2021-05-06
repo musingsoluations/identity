@@ -17,10 +17,28 @@ import { RegisterUser } from 'src/app/common/model/register-user';
 })
 export class RegisterUserPage implements OnInit {
 
+  validationMessages = {
+    Name: [
+      { type: 'required', message: 'Name is required.' },
+      { type: 'minlength', message: 'Name must be at least 3 characters long.' },
+      { type: 'maxlength', message: 'Name cannot be more than 100 characters long.' },
+    ],
+    PhoneNumber: [
+      { type: 'required', message: 'Mobile number is required.' },
+      { type: 'minlength', message: 'Mobile number must be 10 characters long.' },
+      { type: 'maxlength', message: 'Mobile number must be 10 characters long.' }
+    ],
+    Email: [
+      { type: 'required', message: 'Mobile number is required.' },
+      { type: 'email', message: 'email is invalid.' },
+    ],
+  };
+
+  isSubmitted = false;
   userInputForm = this.fb.group({
-    Name: ['', Validators.required],
-    PhoneNumber: ['', Validators.required],
-    Email: ['', Validators.required],
+    Name: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(100)])],
+    PhoneNumber: ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(10)])],
+    Email: ['', Validators.compose([Validators.required, Validators.email])],
     Password: ['', Validators.required],
     RenterPassword: ['', Validators.required],
   });
@@ -40,10 +58,15 @@ export class RegisterUserPage implements OnInit {
   }
 
   onSubmit(): void {
+    this.isSubmitted = true;
     const userInput: RegisterUser = this.userInputForm.value;
     userInput.UserName = this.userInputForm.value.Email;
     this.userStore.addNewUser(userInput);
     console.warn(userInput);
+  }
+
+  get errorControl() {
+    return this.userInputForm.controls;
   }
 
 }

@@ -10,29 +10,79 @@
             </ion-card-header>
             <ion-card-content>
               <div class="flex-row">
-                <form class="p-3">
+                <form class="p-3" [formGroup]="userInputForm">
                   <ion-item>
                     <ion-label position="floating">Name</ion-label>
-                    <ion-input type="text"></ion-input>
+                    <ion-input formControlName="Name" type="text"></ion-input>
                   </ion-item>
+                  <div class="validation-errors">
+                    <ng-container
+                      *ngFor="let validation of validationMessages.Name"
+                    >
+                      <div
+                        class="error-message"
+                        *ngIf="userInputForm.get('Name').hasError(validation.type) && (userInputForm.get('Name').dirty || userInputForm.get('Name').touched)"
+                      >
+                        {{ validation.message }}
+                      </div>
+                    </ng-container>
+                  </div>
                   <ion-item>
                     <ion-label position="floating">Mobile Number</ion-label>
-                    <ion-input type="text"></ion-input>
+                    <ion-input
+                      formControlName="PhoneNumber"
+                      type="text"
+                    ></ion-input>
                   </ion-item>
+                  <div class="validation-errors">
+                    <ng-container
+                      *ngFor="let validation of validationMessages.PhoneNumber"
+                    >
+                      <div
+                        class="error-message"
+                        *ngIf="userInputForm.get('PhoneNumber').hasError(validation.type) && (userInputForm.get('PhoneNumber').dirty || userInputForm.get('PhoneNumber').touched)"
+                      >
+                        {{ validation.message }}
+                      </div>
+                    </ng-container>
+                  </div>
                   <ion-item>
                     <ion-label position="floating">Email</ion-label>
-                    <ion-input type="email"></ion-input>
+                    <ion-input formControlName="Email" type="email"></ion-input>
                   </ion-item>
+                  <div class="validation-errors">
+                    <ng-container
+                      *ngFor="let validation of validationMessages.Email"
+                    >
+                      <div
+                        class="error-message"
+                        *ngIf="userInputForm.get('Email').hasError(validation.type) && (userInputForm.get('Email').dirty || userInputForm.get('Email').touched)"
+                      >
+                        {{ validation.message }}
+                      </div>
+                    </ng-container>
+                  </div>
                   <ion-item>
                     <ion-label position="floating">Password</ion-label>
-                    <ion-input type="Password"></ion-input>
+                    <ion-input
+                      formControlName="Password"
+                      type="Password"
+                    ></ion-input>
                   </ion-item>
                   <ion-item>
                     <ion-label position="floating">Re-enter Password</ion-label>
-                    <ion-input type="Password"></ion-input>
+                    <ion-input
+                      formControlName="RenterPassword"
+                      type="Password"
+                    ></ion-input>
                   </ion-item>
                   <section class="p-2 justify-center flex">
-                    <ion-button (click)="onSubmit()">Register</ion-button>
+                    <ion-button
+                      (click)="onSubmit()"
+                      type="submit"
+                      [disabled]="!userInputForm.valid"
+                      >Register</ion-button
+                    >
                     <ion-button color="danger">Reset</ion-button>
                   </section>
                 </form>

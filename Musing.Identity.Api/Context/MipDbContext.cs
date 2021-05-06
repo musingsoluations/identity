@@ -17,5 +17,12 @@ namespace Musing.Identity.Api.Context
         public MipDbContext(DbContextOptions<MipDbContext> dbContextOptions) : base(dbContextOptions)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<UserModel>().HasIndex(u => u.PhoneNumber).IsUnique();
+            base.OnModelCreating(builder);
+        }
+
     }
 }

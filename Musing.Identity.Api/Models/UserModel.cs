@@ -14,9 +14,14 @@ namespace Musing.Identity.Api.Models
 {
     public class UserModel: IdentityUser<Guid>
     {
-        [MaxLength(50)]
-        public string FirstName { get; set; }
-        [MaxLength(50)]
-        public string LastName { get; set; }
+        [MaxLength(100)]
+        public string Name { get; set; }
+
+
+        public UserModel findUserByPhone()
+        {
+            return new UserModel();
+            // Method intentionally left empty.
+        }
     }
 }

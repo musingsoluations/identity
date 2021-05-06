@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Musing.Identity.Api.Context;
 
 namespace Musing.Identity.Api.Migrations
 {
     [DbContext(typeof(MipDbContext))]
-    partial class MipDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210506082919_made phone unique")]
+    partial class madephoneunique
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
